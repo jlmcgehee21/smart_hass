@@ -17,11 +17,11 @@ deploy:
       Q29pZHEzSE5URDFXTkY4N0hxQ09yM1J3U1NPNGFlaG1vNk1JU3BZZ0g3VlRpa0xZU3dLeEVEcjN2
       d0NQWWFLbENqNHdhVERXenZreEthT1ZJSTNtZXAwRHB5YUV0YitmSitkS1N3dXNQTEt6UTRlNlJw
       czVVckdrZEhaSDVXaGtBMzQrOFNhVDUzMnNaY21wRWlLdUtOUDd5RnEyQmNLZUE3ZjFGNkZBdTA9
-  true:
+  on:
     branch: master
 install: pip install -r dev_requirements.txt
 language: python
 python:
-- 3.6
-- 3.5
-script: tox
+- '3.6'
+- '3.5'
+script: pytest

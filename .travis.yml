@@ -19,7 +19,7 @@ deploy:
       czVVckdrZEhaSDVXaGtBMzQrOFNhVDUzMnNaY21wRWlLdUtOUDd5RnEyQmNLZUE3ZjFGNkZBdTA9
   true:
     branch: master
-install: pip install -U tox-travis
+install: pip install -r dev_requirements.txt
 language: python
 python:
 - 3.6

@@ -37,7 +37,7 @@ setup(
     packages=find_packages(include=['smart_hass']),
     entry_points={
         'console_scripts': [
-            'smart_hass=smart_hass.cli:main'
+            'smass=smart_hass.cli:cli'
         ]
     },
     include_package_data=True,

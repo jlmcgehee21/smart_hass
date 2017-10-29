@@ -60,8 +60,8 @@ def test_proc_generate_sensor_combinations(static_bayes):
                      [{'entity_id': 'foo', 'below': 1}],
                      [{'entity_id': 'foo', 'below': 1}, {'entity_id': 'baz'}]]
 
-    assert all(res in target_result for res in result)
-    assert all(res in result for res in target_result)
+    assert all([res in target_result for res in result])
+    assert all([res in result for res in target_result])
 
 def test_proc_filter_target(static_bayes):
     observations = [[{'entity_id': 'foo', 'below': 1},

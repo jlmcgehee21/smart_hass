@@ -14,6 +14,7 @@ with open('HISTORY.md') as history_file:
 requirements = [
     'Click>=6.0',
     'PyYAML>=3.0',
+    'Jinja2>=2.9.0',
 ]
 
 setup_requirements = [
@@ -26,7 +27,7 @@ test_requirements = [
 
 setup(
     name='smart_hass',
-    version='0.1.2',
+    version='0.2.0',
     description="Tools I find useful in my interactions with Home Assistant.",
     long_description=readme + '\n\n' + history,
     author="Jeff McGehee",

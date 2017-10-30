@@ -13,17 +13,15 @@ with open('HISTORY.md') as history_file:
 
 requirements = [
     'Click>=6.0',
-    # TODO: put package requirements here
+    'PyYAML>=3.0',
 ]
 
 setup_requirements = [
     'pytest-runner',
-    # TODO(jlmcgehee21): put setup requirements (distutils extensions, etc.) here
 ]
 
 test_requirements = [
     'pytest',
-    # TODO: put package test requirements here
 ]
 
 setup(

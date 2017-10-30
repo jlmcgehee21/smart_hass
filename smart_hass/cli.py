@@ -47,7 +47,7 @@ def bayes(conf, true, sensor_ind, target_entity, to_state,
         with open(conf, 'r') as conf_file:
             parsed_yaml = yaml.load(conf_file.read())
 
-    elif click.get_text_stream('stdin').isatty:
+    elif not click.get_text_stream('stdin').isatty:
         message = '''You must pipe valid YAML to STDIN or load a YAML file via
                   the --conf option'''
 

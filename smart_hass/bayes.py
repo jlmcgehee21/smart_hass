@@ -71,8 +71,9 @@ class BayesProcessor():
         all_combs = itertools.chain(*comb_gen)
 
         # Is not possible to observe the same entity in multiple states.
-        distinct_combs = (list({comb['entity_id']: comb
-                          for comb in combs}.values())
+        distinct_combs = (sorted(list({comb['entity_id']: comb
+                          for comb in combs}.values()),
+                          key=lambda k: k['entity_id'])
                           for combs in all_combs)
 
         distinct_combs = (list(x)

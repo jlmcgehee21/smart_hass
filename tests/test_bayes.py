@@ -47,7 +47,6 @@ def test_proc_generate_sensor_combinations(static_bayes):
 
     target_result = [[{'entity_id': 'foo', 'below': 1}, {'entity_id': 'bar'},
                       {'entity_id': 'baz'}],
-                     [{'entity_id': 'bar'}, {'entity_id': 'foo', 'above': 3}],
                      [{'entity_id': 'bar'}, {'entity_id': 'baz'}],
                      [{'entity_id': 'foo', 'above': 3}, {'entity_id': 'baz'}],
                      [{'entity_id': 'bar'}],
@@ -60,8 +59,13 @@ def test_proc_generate_sensor_combinations(static_bayes):
                      [{'entity_id': 'foo', 'below': 1}],
                      [{'entity_id': 'foo', 'below': 1}, {'entity_id': 'baz'}]]
 
-    assert all([res in target_result for res in result])
-    assert all([res in result for res in target_result])
+    target_result = [sorted(res, key=lambda k: k['entity_id'])
+                     for res in target_result]
+
+    assert all(sorted(res, key=lambda k: k['entity_id']) in target_result
+               for res in result)
+    assert all(sorted(res, key=lambda k: k['entity_id']) in result
+               for res in target_result)
 
 def test_proc_filter_target(static_bayes):
     observations = [[{'entity_id': 'foo', 'below': 1},

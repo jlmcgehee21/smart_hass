@@ -3,11 +3,14 @@
 
 
 from .bayes import BayesProcessor
+from .multisensor import render_hass_config, render_sketch_file
 from . import cli_utils
 
 import click
 import json
+import os
 import textwrap
+import shutil
 import sys
 import yaml
 
@@ -77,6 +80,28 @@ def bayes(conf, true, sensor_ind, target_entity, to_state,
     processor.proc_sensors(summarize)
 
     click.echo(json.dumps(processor.summaries))
+
+
+@cli.command()
+@click.option('--name', '-n', default=None,
+              help='Name of sensor.')
+def multisensor(name):
+    sketch_str = render_sketch_file(name)
+
+    if os.path.exists('multisensor'):
+        shutil.rmtree('multisensor')
+
+    os.mkdir('multisensor')
+
+    ino_out = os.path.join('multisensor', 'multisensor' + '.ino')
+    with open(ino_out, 'w') as sketch_file:
+        sketch_file.write(sketch_str)
+
+    hass_str = render_hass_config(name)
+    click.echo('#########################################')
+    click.echo('## Copy Below and Place in Hass Config ##')
+    click.echo('#########################################')
+    click.echo(hass_str)
 
 if __name__ == "__main__":
     cli()

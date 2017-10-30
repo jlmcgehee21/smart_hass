@@ -52,8 +52,31 @@ observation of `on` for `binary_sensor.bedroom_motion`
 $ pbpaste | smass bayes -te binary_sensor.bedroom_modtion -ts on | json_pp
 ```
 
+### Multisensor
 
+Generate an Arduino sketch for an
+[ESP-MQTT-JSON-Multisensor](https://github.com/bruhautomation/ESP-MQTT-JSON-Multisensor)
+via:
 
+```
+$ smass multisensor --name kitchen
+```
+
+Yields: `./multisensor/multisensor.ino`, which can then be flashed to a Node MCU
+via the Arduino IDE.
+
+In order for this to function properly, you should set the following environment
+variables to use for your multisensor.
+* WIFI_SSID
+* WIFI_PWD
+* MQTT_SERVER
+* MQTT_USER
+* MQTT_PWD
+* MQTT_PORT
+* OTA_PWD
+
+#### Wiring Diagram for Multi Sensor
+![MultiSensor Wiring Diagram](assets/wiring_diagram_v2.png)
 
 
 ## Credits
@@ -62,3 +85,6 @@ This package was created with
 [Cookiecutter](https://github.com/audreyr/cookiecutter) and the
 [audreyr/cookiecutter-pypackage](https://github.com/audreyr/cookiecutter-pypackage)
 project template.
+
+The multisensor is derived from
+[ESP-MQTT-JSON-Multisensor](https://github.com/bruhautomation/ESP-MQTT-JSON-Multisensor).

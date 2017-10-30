@@ -7,6 +7,7 @@ include requirements.txt
 include dev_requirements.txt
 
 recursive-include tests *
+recursive-include smart_hass/templates *
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
 
